@@ -1,6 +1,6 @@
 import 'dart:io';
 
-main() {
+void main() {
   Directory current = Directory.current;
   print(current.path);
 }
