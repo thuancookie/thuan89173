@@ -4,6 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
+// Color.fromRGBO(158, 158, 158, 0.2) light grey
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -11,11 +12,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      // theme: ThemeData(
+      //   brightness: Brightness.dark,
+      //   primarySwatch: Colors.red,
+      // ),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       theme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.red,
+        brightness: Brightness.light,
+        // primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyCategoryPage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -59,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: TextField(
                           decoration: const InputDecoration(
                               filled: true,
-                              fillColor: Color(0x4C9E9E9E),
+                              fillColor: Color(0x139E9E9E),
                               border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(100))),
@@ -77,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: TextField(
                           decoration: const InputDecoration(
                               filled: true,
-                              fillColor: Color(0x4C9E9E9E),
+                              fillColor: Color(0x139E9E9E),
                               border: OutlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(100))),
@@ -137,5 +143,221 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ]))),
         ));
+  }
+}
+
+class MyCategoryPage extends StatefulWidget {
+  const MyCategoryPage({super.key});
+
+  @override
+  State<MyCategoryPage> createState() => _MyCategoryPageState();
+}
+
+class _MyCategoryPageState extends State<MyCategoryPage> {
+  final List<String> categoryName = [
+    "Fashion",
+    "Beauty",
+    "Electronics",
+    "Jewellery",
+    "Footwear",
+    "Toys",
+    "Furniture",
+    "Mobiles"
+  ];
+  final List<String> categoryIcon = [
+    "https://cdn-icons-png.flaticon.com/512/2331/2331716.png",
+    "https://cdn-icons-png.flaticon.com/512/3378/3378785.png",
+    "https://cdn-icons-png.flaticon.com/512/2432/2432692.png",
+    "https://cdn-icons-png.flaticon.com/512/2361/2361685.png",
+    "https://cdn-icons-png.flaticon.com/512/5499/5499206.png",
+    "https://cdn-icons-png.flaticon.com/512/3819/3819347.png",
+    "https://cdn-icons-png.flaticon.com/512/1198/1198368.png",
+    "https://cdn-icons-png.flaticon.com/512/2482/2482945.png"
+  ];
+  final List<String> itemName = [
+    "laptops / PC",
+    "TV",
+    "Dryers / Styling",
+    "Headphones",
+    "Tablet",
+    "Mobile Covers",
+    "Printers",
+    "Powerbank",
+    "laptops / PC",
+    "TV",
+    "Dryers / Styling",
+    "Headphones",
+    "Tablet",
+    "Mobile Covers",
+    "Printers",
+    "Powerbank",
+  ];
+  final List<String> itemImage = [
+    "https://cdn-icons-png.flaticon.com/512/428/428001.png",
+    "https://cdn-icons-png.flaticon.com/128/1023/1023521.png",
+    "https://cdn-icons-png.flaticon.com/512/4352/4352945.png",
+    "https://cdn-icons-png.flaticon.com/512/3791/3791461.png",
+    "https://cdn-icons-png.flaticon.com/512/3616/3616856.png",
+    "https://cdn-icons-png.flaticon.com/512/186/186239.png",
+    "https://cdn-icons-png.flaticon.com/512/3233/3233446.png",
+    "https://cdn-icons-png.flaticon.com/512/3902/3902176.png",
+    "https://cdn-icons-png.flaticon.com/512/428/428001.png",
+    "https://cdn-icons-png.flaticon.com/128/1023/1023521.png",
+    "https://cdn-icons-png.flaticon.com/512/4352/4352945.png",
+    "https://cdn-icons-png.flaticon.com/512/3791/3791461.png",
+    "https://cdn-icons-png.flaticon.com/512/3616/3616856.png",
+    "https://cdn-icons-png.flaticon.com/512/186/186239.png",
+    "https://cdn-icons-png.flaticon.com/512/3233/3233446.png",
+    "https://cdn-icons-png.flaticon.com/512/3902/3902176.png",
+  ];
+
+  int selectedIndex = 0;
+  int selectedItem = -1;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Categories"),
+        backgroundColor: Colors.white,
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+        actions: [
+          IconButton(
+              color: Colors.black,
+              onPressed: () => {print("Search button")},
+              icon: Icon(Icons.search)),
+          IconButton(
+              color: Colors.black,
+              onPressed: () => {print("Favorite button")},
+              icon: Icon(Icons.favorite_border)),
+          IconButton(
+              color: Colors.black,
+              onPressed: () => {print("More button")},
+              icon: Icon(Icons.more_horiz_outlined))
+        ],
+      ),
+      body: Container(
+        color: Color.fromRGBO(158, 158, 158, 0.2),
+        // height: 700,
+        padding: EdgeInsets.only(top: 5),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Container(
+                color: Colors.white,
+                child: categoryName.length > 0
+                    ? ListView.separated(
+                        itemCount: categoryName.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            // contentPadding: EdgeInsets.all(5),
+                            // leading: Icon(Icons.local_grocery_store),
+                            title: Container(
+                              child: Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Colors.transparent,
+                                    backgroundImage:
+                                        NetworkImage("${categoryIcon[index]}"),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "${categoryName[index]}",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: selectedIndex == index
+                                          ? Colors.pink
+                                          : Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              // color: selectedIndex == index
+                              // ? Color.fromRGBO(158, 158, 158, 0.2)
+                              //     : Colors.white,
+                            ),
+
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+
+                            // trailing: Icon(Icons.remove_circle_outline),
+                          );
+                        },
+                        separatorBuilder: (BuildContext, int index) =>
+                            const Divider(
+                          color: Color(0x769E9E9E),
+                        ),
+                      )
+                    : Center(
+                        child: Text("Không có item nào!"),
+                      ),
+              ),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Expanded(
+              flex: 6,
+              child: selectedIndex == 2
+                  ? Container(
+                      child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                        itemCount: itemImage.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            contentPadding: EdgeInsets.all(1),
+                            // leading: Icon(Icons.local_grocery_store),
+
+                            title: Container(
+                              padding: EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Image.network(
+                                    "${itemImage[index]}",
+                                    height: 50,
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "${itemName[index]}",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: selectedItem == index
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              color: selectedItem == index
+                                  ? Color.fromRGBO(233, 30, 98, 0.5)
+                                  : Colors.white,
+                            ),
+
+                            onTap: () {
+                              setState(() {
+                                selectedItem = index;
+                              });
+                            },
+
+                            // trailing: Icon(Icons.remove_circle_outline),
+                          );
+                        },
+                      ),
+                    )
+                  : Text("${categoryName[selectedIndex]}"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
