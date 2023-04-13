@@ -175,7 +175,7 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
     "https://cdn-icons-png.flaticon.com/512/2482/2482945.png"
   ];
   final List<String> itemName = [
-    "laptops / PC",
+    "Laptops / PC",
     "TV",
     "Dryers / Styling",
     "Headphones",
@@ -183,7 +183,7 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
     "Mobile Covers",
     "Printers",
     "Powerbank",
-    "laptops / PC",
+    "Laptops / PC",
     "TV",
     "Dryers / Styling",
     "Headphones",
@@ -316,7 +316,7 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
                             // leading: Icon(Icons.local_grocery_store),
 
                             title: Container(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(20),
                               child: Column(
                                 children: [
                                   Image.network(
@@ -329,7 +329,7 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
                                   Text(
                                     "${itemName[index]}",
                                     style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 10,
                                       color: selectedItem == index
                                           ? Colors.white
                                           : Colors.black,
@@ -353,7 +353,9 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
                         },
                       ),
                     )
-                  : Text("${categoryName[selectedIndex]}"),
+                  : Center(
+                      child: Text("${categoryName[selectedIndex]} items"),
+                    ),
             ),
           ],
         ),
