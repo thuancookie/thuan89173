@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
         // primarySwatch: Colors.red,
       ),
-      home: const MyCategoryPage(),
+      // home: const MyCategoryPage(),
+      home: CheckOutPage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -341,7 +342,7 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
                                   ? Color.fromRGBO(233, 30, 98, 0.5)
                                   : Colors.white,
                             ),
-
+                            onLongPress: () {},
                             onTap: () {
                               setState(() {
                                 selectedItem = index;
@@ -357,6 +358,204 @@ class _MyCategoryPageState extends State<MyCategoryPage> {
                       child: Text("${categoryName[selectedIndex]} items"),
                     ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CheckOutPage extends StatefulWidget {
+  const CheckOutPage({super.key});
+
+  @override
+  State<CheckOutPage> createState() => _CheckOutPageState();
+}
+
+class _CheckOutPageState extends State<CheckOutPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(158, 158, 158, 0.2),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {},
+        ),
+        title: const Text("Checkout"),
+        backgroundColor: Colors.green,
+        centerTitle: true,
+      ),
+      body: Container(
+        padding: EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Container(
+                color: Colors.white,
+                padding: EdgeInsets.all(15),
+                margin: EdgeInsets.only(bottom: 15),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Cart Summary",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                        child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Subtotal(4 items)",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Rs. 7,090.00",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Promotion Discounts",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Rs. 300.00",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Add Coupon",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            Spacer(),
+                            Flexible(
+                                child: TextField(
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.black))),
+                            ))
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Delivery",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Rs. 0.00",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Est. Total",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            Spacer(),
+                            Text(
+                              "Rs. 6,790.00",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )),
+                  ],
+                )),
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(15),
+              margin: EdgeInsets.only(bottom: 15),
+              child: Column(children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Recipient Details",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(
+                      color: Color.fromRGBO(216, 216, 216, 0.094),
+                    ))),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+
+                // width: 30,
+                Row(
+                  children: [
+                    Container(
+                      width: 80,
+                      child: TextField(
+                        style: TextStyle(),
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                          color: Color.fromRGBO(216, 216, 216, 0.094),
+                        ))),
+                      ),
+                    ),
+                    Spacer(),
+                    Container(
+                      width: 230,
+                      child: TextField(
+                        style: TextStyle(),
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                          color: Color.fromRGBO(216, 216, 216, 0.094),
+                        ))),
+                      ),
+                    ),
+                  ],
+                )
+              ]),
+            ),
+            Container(),
+            Container(),
           ],
         ),
       ),
